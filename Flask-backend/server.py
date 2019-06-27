@@ -19,7 +19,7 @@ app.secret_key = "willywonka"
 @app.route('/')
 def index():
     """Main page"""
-
+    
     return render_template("index.html", token="Hello Flask+React")
 
 
