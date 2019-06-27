@@ -1,0 +1,7 @@
+env
+*.pyc
+__pycache__
+secrets.sh
+.DS_Store
+.idea/
+node_modules/
