@@ -27,15 +27,13 @@ class Variant(db.Model):
 
     __tablename__ = "variants"
 
-    variant_id = db.Column(db.Integer,
-                        autoincrement=True,
-                        primary_key=True)
+    variant_id = db.Column(db.Integer,autoincrement=True, primary_key=True)
     variant_name = db.Column(db.String(100), nullable=True) # variants can be long
     nucleotide_change = db.Column(db.String(64), nullable=True)
     protein_change = db.Column(db.String(64), nullable=True)
     other_mappings = db.Column(db.String(64), nullable=True)
 
-    gene_id = db.Column(db.String(1), db.ForeignKey('gender.gender_code'))
+    gene_id = db.Column(db.String(1), db.ForeignKey('gene.gene_id'))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
