@@ -16,6 +16,7 @@ app.jinja_env.auto_reload = True
 # Required to use Flask sessions and the debug toolbar
 app.secret_key = "willywonka"
 
+
 @app.route('/')
 def index():
     """Main page"""
