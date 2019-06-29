@@ -52,9 +52,6 @@ class Variant(db.Model):
     reported_alt = db.Column(db.Varchar(200), nullable=True) # this column is mainly NaN, or -, not sure if 200 is appropriate here
 
 
-
-
-    
     gene = db.relationship("Gene", backref="variant")
 
     def __repr__(self):
