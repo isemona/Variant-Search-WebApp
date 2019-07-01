@@ -22,13 +22,13 @@ Excluding the intergentic regions (660 total) the file contains:
 
 ## Run the backend and frontend separately
 
-Flask-backend directory contains server.py 
-$ cd /Flask-backend
-$ python3 server.py
+Flask-backend directory contains server.py <br />
+$ cd /Flask-backend <br />
+$ python3 server.py <br />
 
-react-frontend directory contains index.html, App.js
-$ cd /frontend
-$ npm start
+react-frontend directory contains index.html, App.js <br />
+$ cd /frontend <br />
+$ npm start <br />
 
 
 
