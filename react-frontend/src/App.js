@@ -105,6 +105,53 @@ import React, { Component } from 'react';
 
 // // export default App;
 
+// class MyForm extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       input: '',
+//       submit: ''
+//     };
+//     this.handleChange = this.handleChange.bind(this);
+//     this.handleSubmit = this.handleSubmit.bind(this);
+//   }
+//   handleChange(event) {
+//     this.setState({
+//       input: event.target.value
+//     });
+//   }
+//   handleSubmit(event) {
+//     event.preventDefault();
+//     const data = new FormData(event.target);
+//     fetch('http://0.0.0.0:80/search', {
+//       method: 'POST',
+//       body: data,
+
+//     });
+//     this.setState({
+//       input: '',
+//       submit: this.state.input
+//     });
+//   }
+//   render() {
+//     return (
+//       <div>
+//         <form onSubmit={this.handleSubmit}>
+//           { /* change code below this line */}
+//           Search for a Gene <input value={this.state.input} name="gene" onChange={this.handleChange} />
+//           { /* change code above this line */}
+//           <button type='submit'>Submit!</button>
+//         </form>
+//         <h1>{this.state.submit}</h1>
+//       </div>
+//     );
+//   }
+// };
+
+// export default MyForm;
+
+
+
 class MyForm extends Component {
   constructor(props) {
     super(props);
@@ -122,27 +169,35 @@ class MyForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    const data = new FormData(event.target);
-    fetch('http://0.0.0.0:80/search', {
-      method: 'POST',
-      body: data,
 
-    });
-    this.setState({
-      input: '',
-      submit: this.state.input
-    });
+    // Call your api here
+    fetch('http://localhost:5000/', {
+      headers: {
+       'Content-Type': 'application/json'
+      }})
+      .then(res => res.json())
+      .then(data => {
+        console.log("Data", data)
+
+        // Set state and update view
+
+      });
+
+  this.setState({
+    input: '',
+    submit: this.state.input
+  });
   }
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          { /* change code below this line */}
-          Search for a Gene <input value={this.state.input} name="gene" onChange={this.handleChange} />
-          { /* change code above this line */}
+          { /* change code below this line */ }
+Search for a Gene <input value={this.state.input} onChange={this.handleChange}/>
+          { /* change code above this line */ }
           <button type='submit'>Submit!</button>
         </form>
-        <h1>{this.state.submit}</h1>
+        {/* <h1>{data.this.state.submit}</h1> */}
       </div>
     );
   }

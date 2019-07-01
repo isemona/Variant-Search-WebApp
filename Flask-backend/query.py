@@ -18,3 +18,5 @@ def create_gene_dict(gene_file):
                 gene_dict[row['Gene']].append({attribute: row[attribute] for attribute in headers if attribute != "Gene" }) 
 
     return gene_dict
+
+    # refactor with default dict
