@@ -5,7 +5,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 from flask_restful import Resource, Api, reqparse
 from flask_cors import CORS
-# need to allow access to database
+
 # from model import connect_to_db, db
 
 from query import *
@@ -13,9 +13,6 @@ from query import *
 app = Flask(__name__)
 api = Api(app)
 CORS(app)
-
-app.jinja_env.undefined = StrictUndefined
-app.jinja_env.auto_reload = True
 
 # The Flask-DebugToolbar requires the 'SECRET_KEY' config var to be set
 app.secret_key = "gene_machine"
@@ -29,7 +26,7 @@ class HelloWorld(Resource):
 
 api.add_resource(HelloWorld, '/')
 
-class anything(Resource):
+class Genes(Resource):
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('gene', type=str, location='form')
@@ -37,11 +34,12 @@ class anything(Resource):
         return variants[args['gene']]
 
 
-api.add_resource(anything, '/search')
+api.add_resource(Genes, '/search')
 
 
 if __name__ == "__main__":
     app.run(debug=True) # Debug mode should never be used in a production environment!
+    
     # connect_to_db(app)
 
     DebugToolbarExtension(app)
