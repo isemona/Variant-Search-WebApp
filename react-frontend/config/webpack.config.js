@@ -496,7 +496,7 @@ module.exports = function(webpackEnv) {
                   keepClosingSlash: true,
                   minifyJS: true,
                   minifyCSS: true,
-                  minifyURLs: true,
+                  minifyURLs: true,r
                 },
               }
             : undefined

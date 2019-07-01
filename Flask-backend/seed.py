@@ -1,4 +1,6 @@
 import csv
+import pandas as pd
+import numpy as np
 
 file = 'variants.tsv'
 def get_gene_list(file):
@@ -17,12 +19,48 @@ def get_gene_list(file):
 
 0 BRCA2: {variant1: attr1, attr2, variant2: attr1, attr2}
 
-
+def get_attributes:
+    file = 'variants.tsv'
+    file_data = pd.read_table(file,sep='\t')
+    # file_data.head()
+    for data in file_data:
+        print(data)
 
 def load_genes():
-
-    for key,value in gene_dict.items():
-        gene_name = key
+    file = 'variants.tsv'
+    
+def get_gene_list(file):
+    dict = {}
+    with open(file) as tsvfile:
+        reader = csv.DictReader(tsvfile, dialect='excel-tab')
+        for row in reader:
+            if row["Gene"] not in dict:
+                dict[row["Gene"]] = (
+                    [row['Nucleotide Change'], 
+                     row['Protein Change'], 
+                     row['Other Mappings'],
+                     row['Alias'], 
+                     row['Transcripts'], 
+                     row['Region']])
+                     row['Reported'], 
+                     row['Classification'], 
+                     row['Inferred Classification'], 
+                     row['Source'], 
+                     row['Last Evaluated'], 
+                     row['Last Updated'], 
+                     row['URL'], 
+                     row['Submitter Comment'], 
+                     row['Assembly'], 
+                     row['Chr'], 
+                     row['Genomic Start'], 
+                     row['Genomic Stop'], 
+                     row['Ref'], 
+                     row['Alt'], 
+                     row['Accession'], 
+                     row['Reported Ref'], 
+                     row['Reported Alt']])
+            
+    return dict
 
         gene = Gene(
                     gene_name = 'BRCA2'
