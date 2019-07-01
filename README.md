@@ -1,6 +1,6 @@
-# Variant Search WebApp Installation
+# Variant Search Web Application
 
-Variant Search Engine is a Flask backend and React frontend web application that allows users to search for genes and their respective variants and their attributes. 
+Variant Search Engine is a Flask backend and React frontend web application that allows users to search for genes and their respective variants and variant-attributes. 
 
 ## Features Include:
 1. A search field that allow users to enter a gene and returns a tabular view of each variant and their attributes.
@@ -8,10 +8,10 @@ Variant Search Engine is a Flask backend and React frontend web application that
 2. Provides an auto-suggest feature for entering the gene name for faster lookup.
 
 ## Datasource
-Data contains gene names and intergenetic regions. For the purpose of this project the inter-genetic regions or blank spaces in the sequence have been removed. 
+The data located in the variants.tsv file contains a sequence of genes and inter-genetic regions. For the purpose of this project the inter-genetic regions or blank spaces in the sequence have been removed. 
 
-Without the intergentic regions (660 total) the file contains:
-4345 Gene
+Excluding the intergentic regions (660 total) the file contains:
+4345 Unique Genes
 47855 Variants (rows)
 
 ## Install requirements
@@ -26,10 +26,9 @@ Flask-backend directory contains server.py
 $ cd /Flask-backend
 $ python3 server.py
 
-react-frontend directory contains indext.html, App.js
+react-frontend directory contains index.html, App.js
 $ cd /frontend
 $ npm start
-
 
 
 
