@@ -4,6 +4,7 @@ from flask import Flask, flash, redirect, request, render_template, session, jso
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 from flask_restful import Resource, Api
+from flask_cors import CORS
 # need to allow access to database
 # from model import connect_to_db, db
 
@@ -11,6 +12,8 @@ from query import *
 
 app = Flask(__name__)
 api = Api(app)
+CORS(app)
+
 app.jinja_env.undefined = StrictUndefined
 app.jinja_env.auto_reload = True
 
@@ -93,11 +96,11 @@ class HelloWorld(Resource):
     def get(self):
         return todos
 
-api.add_resource(HelloWorld, '/index.html')
+api.add_resource(HelloWorld, '/')
 
 
 if __name__ == "__main__":
-    app.debug = True # Debug mode should never be used in a production environment!
+    app.run(debug=True) # Debug mode should never be used in a production environment!
     # connect_to_db(app)
 
     DebugToolbarExtension(app)
