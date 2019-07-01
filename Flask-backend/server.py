@@ -3,7 +3,7 @@
 from flask import Flask, flash, redirect, request, render_template, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
-from flask_restful import Resource, Api
+from flask_restful import Resource, Api, reqparse
 from flask_cors import CORS
 # need to allow access to database
 # from model import connect_to_db, db
@@ -24,9 +24,20 @@ variants = create_gene_dict(gene_file)
 
 class HelloWorld(Resource):
     def get(self):
+        # no need to say jsonify as flask_restful takes care of this
         return variants
 
 api.add_resource(HelloWorld, '/')
+
+class anything(Resource):
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('gene', type=str, location='form')
+        args = parser.parse_args()
+        return variants[args['gene']]
+
+
+api.add_resource(anything, '/search')
 
 
 if __name__ == "__main__":
