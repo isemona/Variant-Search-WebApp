@@ -2,7 +2,7 @@
 
 Variant Search Engine is a Flask backend and React frontend web application that allows users to search for genes and their respective variants and variant-attributes. 
 
-## Features Include:
+## Features include:
 1. A search field that allow users to enter a gene and returns a tabular view of each variant and their attributes.
 
 2. Provides an auto-suggest feature for entering the gene name for faster lookup.
