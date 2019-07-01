@@ -1,34 +1,33 @@
 import csv
-import pandas as pd
-import numpy as np
 
-file = 'variants.tsv'
-def get_gene_list(file):
-    arr = []
-    with open(file) as tsvfile:
+gene_file = 'variants.tsv'
+
+def create_gene_dict(gene_file):
+    gene_dict = {}
+    with open(gene_file) as tsvfile:
         reader = csv.DictReader(tsvfile, dialect='excel-tab')
+        headers = reader.fieldnames
         for row in reader:
-            arr.append(row['Gene'])
-    variants = [item for item in arr if item != ''] # duplicates that okay
-    print(len(variants))
-    genes = set(variants)
-    print(len(genes))
-    return genes 
+            # if it is not an empty string continue
+            if row['Gene']: 
+                # initializing each gene to have an array
+                if gene_dict.get(row["Gene"]) is None: 
+                    gene_dict[row['Gene']] = []
+                # alway append a dict comprehension of the attributes except for Gene
+                gene_dict[row['Gene']].append({attribute: row[attribute] for attribute in headers if attribute != "Gene" }) 
 
-# turn file into dictionary gene_dict
+    return gene_dict
 
-0 BRCA2: {variant1: attr1, attr2, variant2: attr1, attr2}
-
-def get_attributes:
-    file = 'variants.tsv'
-    file_data = pd.read_table(file,sep='\t')
-    # file_data.head()
-    for data in file_data:
-        print(data)
 
 def load_genes():
-    file = 'variants.tsv'
-    
+
+
+    gene = Gene(
+                    gene_name = 'BRCA2'
+        )
+        db.session.add(gene)
+        db.session.commit()
+
 def get_gene_list(file):
     dict = {}
     with open(file) as tsvfile:
@@ -126,6 +125,16 @@ def load_variants():
         )
         db.session.add(gene)
         db.session.commit()
+
+    {
+        "Gene" = {
+            "BRCA" : [{
+                "nucleotide_change":
+
+
+            }]
+        }
+    }
 
 if __name__ == "__main__":
     connect_to_db(app)

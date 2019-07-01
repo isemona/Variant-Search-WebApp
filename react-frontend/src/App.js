@@ -10,20 +10,20 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [],
+      variants: [],
       isLoaded: false,
     }
   }
 
   componentDidMount() {
-    fetch("http://localhost:5000/")
+    fetch("http://127.0.0.1:5000/")
       .then(res => res.json())
       .then(
         (data) => {
           console.log(data)
           this.setState({
             isLoaded: true,
-            todos: data,
+            variants: data,
           })
         });
       //   },
@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   render() {
-    let { isLoaded, todos } = this.state;
+    let { isLoaded, variants } = this.state;
 
     if (!isLoaded) {
       return <div>Loading...</div>
@@ -49,15 +49,14 @@ class App extends Component {
     else {
       return (
         <div className="App">
-          <ul>
-            {todos.map(todos =>(
-                <li key = {todos.BRCA1}>
-                {/* <li key = {todos.BRCA2}></li>  */}
-                {todos.BRCA1.variant_1.nucleotide_change}
+          {/* <ul>
+            {variants.map(variant =>(
+                <li key = {variant}>
+                {variant.nucleotide_change}
                 </li>
-            ))
-            }
-          </ul>
+             ))}
+          </ul> */}
+          // Has loaded!
         </div>
       );
   }
