@@ -155,7 +155,8 @@ class MyForm extends Component {
         super(props);
         this.state = {
             input: '',
-            submit: ''
+            submit: '',
+            genes: []
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -181,35 +182,61 @@ class MyForm extends Component {
 
                 // Set state and update view
                 this.setState({
-                    input: '',
-                    submit: this.state.input
-
+                    genes: data
                 });
-
-
             });
     }
 
-    // renderTableHeader() {
-    //     let header = Object.keys(this.state.students[0])
-    //     return header.map((key, index) => {
-    //         return <th key={index}>{key.toUpperCase()}</th>
-    //     })
+    renderTableHeader() {
+        
+        if (this.state.genes.length > 0) {
+            let header = Object.keys(this.state.genes[0])
+            return header.map((key, index) => {
+                return <th key={index}>{key.toUpperCase()}</th>
+            })
+        } else {
+            return ''
+        }
+    }
+
+    // renderTableHeader(){
+    //     return (
+    //         <th>{this.state.genes[0]}</th>
+    //         // <th>Nucleotide Change</th>
+    //         // <th>Nucleotide Change</th>
+    //         // <th>Nucleotide Change</th>
+    //         // <th>Nucleotide Change</th>
+    //     )
     // }
 
-    // renderTableData() {
-    //     return this.state.students.map((student, index) => {
-    //         const { id, name, age, email } = student //destructuring
-    //         return (
-    //             <tr key={id}>
-    //                 <td>{id}</td>
-    //                 <td>{name}</td>
-    //                 <td>{age}</td>
-    //                 <td>{email}</td>
-    //             </tr>
-    //         )
-    //     })
-    // }
+    renderTableData() {
+        return (
+            <tr>
+                <td>{this.state.genes['Nucleotide Change']}</td>
+                <td>{this.state.genes['Protein Change']}</td>
+                <td>{this.state.genes['Other Mappings']}</td>
+                <td>{this.state.genes['Alias']}</td>
+                <td>{this.state.genes['Transcripts']}</td>
+                <td>{this.state.genes['Region']}</td>
+                <td>{this.state.genes['Reported Classification']}</td>
+                <td>{this.state.genes['Inferred Classification']}</td>
+                <td>{this.state.genes['Source']}</td>
+                <td>{this.state.genes['Last Evaluated']}</td>
+                <td>{this.state.genes['Lat Updated']}</td>
+                <td>{this.state.genes['URL']}</td>
+                <td>{this.state.genes['Submitter Comment']}</td>
+                <td>{this.state.genes['Assembly']}</td>
+                <td>{this.state.genes['Chr']}</td>
+                <td>{this.state.genes['Genomic Start']}</td>
+                <td>{this.state.genes['Genomic Stop']}</td>
+                <td>{this.state.genes['Ref']}</td>
+                <td>{this.state.genes['Alt']}</td>
+                <td>{this.state.genes['Accession']}</td>
+                <td>{this.state.genes['Reported Ref']}</td>
+                <td>{this.state.genes['Reported Alt']}</td>
+            </tr>
+        )
+    }
 
     render() {
         return (
@@ -220,15 +247,16 @@ class MyForm extends Component {
                     <button type='submit'>Submit</button>
                 </form>
 
-                {/* <h1 id='title'>React Dynamic Table</h1>
-                <table id='students'>
+                <h1 id='title'>Gene-Variants</h1>
+                <table id='genes'>
                     <tbody>
                         <tr>{this.renderTableHeader()}</tr>
                         {this.renderTableData()}
+
                     </tbody>
-                </table> */}
+                </table>
             </div>
-            
+
         );
     }
 };
