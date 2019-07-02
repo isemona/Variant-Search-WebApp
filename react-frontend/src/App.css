@@ -1,33 +1,49 @@
-.App {
+
+
+#header-h1 {
   text-align: center;
+  margin: 25px 100px 10px 100px;
+  color: teal;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+#search-bar {
+  margin: 10px 100px 25px 100px;
+  padding: 25px 25px 25px 25px;
+  /* border: 1px solid blue; */
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-box {
+  text-align: center;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+#table-title {
+  text-align: center;
+  /* border-collapse: collapse;
+  border: 3px solid #ddd; */
+  width: 100%;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+
+#variants td, #gene th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#variants tr:nth-child(even){background-color: #f2f2f2;}
+
+#variants tr:hover {background-color: #ddd;}
+
+#variants th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: lightblue;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }

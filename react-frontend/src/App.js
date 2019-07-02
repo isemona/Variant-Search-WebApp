@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { thisExpression } from '@babel/types';
+
+
+import './App.css'
 
 class MyForm extends Component {
     constructor(props) {
@@ -19,7 +23,7 @@ class MyForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        // Call your api here
+        // Call api here
         fetch('http://localhost:5000/search/' + this.state.input, {
             headers: {
                 'Content-Type': 'application/json'
@@ -29,9 +33,11 @@ class MyForm extends Component {
             .then(res => res.json())
             .then(data => {
                 console.log("Data", data)
-
+                
                 // Set state and update view
                 this.setState({
+                    // input: '',
+                    submit: this.state.input,
                     genes: data
                 });
             });
@@ -90,14 +96,16 @@ class MyForm extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <span style={{ color: '#008080', fontSize: 18 }}>Search for a Gene </span>
+                <h1 id="header-h1">Gene-variants Search Engine</h1>
+                <div className="search-box">
+                <form id="search-bar" onSubmit={this.handleSubmit}>
+                    <span style={{ color: '#008080', fontSize: 18 }}>Search for a gene </span>
                     <input value={this.state.input} onChange={this.handleChange} />
-                    <button type='submit'>Submit</button>
+                    <button type='submit'>Find</button>
                 </form>
-
-                <h1 id='title'>Gene-Variants</h1>
-                <table id='genes'>
+                </div>
+                <h3 id='table-title' style={{ color: '#008080', fontSize: 30 }}>Variants Table</h3>
+                <table id='variants'>
                     <tbody>
                         
                         <tr>{this.renderTableHeader()}</tr>
