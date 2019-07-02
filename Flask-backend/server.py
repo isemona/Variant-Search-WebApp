@@ -19,22 +19,13 @@ app.secret_key = "gene_machine"
 
 variants = create_gene_dict(gene_file)
 
-class HelloWorld(Resource):
-    def get(self):
-        # no need to say jsonify as flask_restful takes care of this
-        return variants
-
-api.add_resource(HelloWorld, '/')
 
 class Genes(Resource):
-    def post(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument('gene', type=str, location='form')
-        args = parser.parse_args()
-        return variants[args['gene']]
+    def get(self, gene_id):
+        return variants[gene_id]
 
-
-api.add_resource(Genes, '/search')
+# Handles the route, explicitly tells Flask we are requesting gene_id
+api.add_resource(Genes, '/search/<string:gene_id>') 
 
 
 if __name__ == "__main__":
@@ -44,5 +35,5 @@ if __name__ == "__main__":
 
     DebugToolbarExtension(app)
 
-    #port 5000 already taken I used 80 instead for this project
+    # Port 5000 already taken I used 80 instead for this project
     app.run(host="0.0.0.0", port=80)

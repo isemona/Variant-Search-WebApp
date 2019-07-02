@@ -169,24 +169,48 @@ class MyForm extends Component {
         event.preventDefault();
 
         // Call your api here
-        fetch('http://localhost:5000/', {
+        fetch('http://localhost:5000/search/' + this.state.input, {
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            method: 'GET',
         })
             .then(res => res.json())
             .then(data => {
                 console.log("Data", data)
 
                 // Set state and update view
+                this.setState({
+                    input: '',
+                    submit: this.state.input
+
+                });
+
 
             });
-
-        this.setState({
-            input: '',
-            submit: this.state.input
-        });
     }
+
+    // renderTableHeader() {
+    //     let header = Object.keys(this.state.students[0])
+    //     return header.map((key, index) => {
+    //         return <th key={index}>{key.toUpperCase()}</th>
+    //     })
+    // }
+
+    // renderTableData() {
+    //     return this.state.students.map((student, index) => {
+    //         const { id, name, age, email } = student //destructuring
+    //         return (
+    //             <tr key={id}>
+    //                 <td>{id}</td>
+    //                 <td>{name}</td>
+    //                 <td>{age}</td>
+    //                 <td>{email}</td>
+    //             </tr>
+    //         )
+    //     })
+    // }
+
     render() {
         return (
             <div>
@@ -195,10 +219,44 @@ class MyForm extends Component {
                     <input value={this.state.input} onChange={this.handleChange} />
                     <button type='submit'>Submit</button>
                 </form>
-                <h1>{this.state.submit}</h1>
+
+                {/* <h1 id='title'>React Dynamic Table</h1>
+                <table id='students'>
+                    <tbody>
+                        <tr>{this.renderTableHeader()}</tr>
+                        {this.renderTableData()}
+                    </tbody>
+                </table> */}
             </div>
+            
         );
     }
 };
 
 export default MyForm;
+
+
+// renderTable = () => {
+//     return this.state.feedback.map(value => {
+//         return (
+//             <table>
+//                 <tr>
+//                     <td>Feedback ID</td>
+//                     <td>{value.feedbackID}</td>
+//                 </tr>
+//                 <tr>
+//                     <td>Poster ID</td>
+//                     <td>{value.posterID}</td>
+//                 </tr>
+//                 <tr>
+//                     <td>Comment</td>
+//                     <td>{value.comment}</td>
+//                 </tr>
+//             </table>
+//         )
+//     })
+// }
+
+// render() {
+//     return <div>{this.renderTable()}</div>;
+// }
