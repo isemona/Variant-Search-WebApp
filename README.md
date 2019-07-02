@@ -6,8 +6,6 @@ Gene-variants Search Engine is a Flask backend and React frontend web applicatio
 1. A search field that allow users to enter a gene and returns a tabular view of each variant and their attributes.
 
 2. Provides an auto-suggest feature for entering the gene name for faster lookup.
-Inline-style: 
-![alt text](https://res.cloudinary.com/dvhvxgxtf/image/upload/v1562106782/Screen_Shot_2019-07-02_at_3.32.42_PM_dwsvuz.png)
 
 ## Datasource
 The data located in the variants.tsv file contains a sequence of genes and inter-genetic regions. For the purpose of this project the inter-genetic regions or blank spaces in the sequence have been removed. 
