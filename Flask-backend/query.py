@@ -20,3 +20,4 @@ def create_gene_dict(gene_file):
     return gene_dict
 
     # refactor with default dict
+
