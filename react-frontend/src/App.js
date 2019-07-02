@@ -41,6 +41,7 @@ class MyForm extends Component {
 
         if (this.state.genes.length > 0) {
             let header = Object.keys(this.state.genes[0])
+            header.splice(0, 0, 'Gene')
             return header.map((key, index) => {
                 return <th key={index}>{key.toUpperCase()}</th>
             })
@@ -55,6 +56,7 @@ class MyForm extends Component {
             return this.state.genes.map((gene, index) => {
                 return (
                     <tr key={index}>
+                        <td>{this.state.input}</td>
                         <td>{gene['Nucleotide Change']}</td>
                         <td>{gene['Protein Change']}</td>
                         <td>{gene['Other Mappings']}</td>
@@ -97,6 +99,7 @@ class MyForm extends Component {
                 <h1 id='title'>Gene-Variants</h1>
                 <table id='genes'>
                     <tbody>
+                        
                         <tr>{this.renderTableHeader()}</tr>
                         {this.renderTableData()}
 
