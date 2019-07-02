@@ -10,7 +10,7 @@ Gene-variants Search Engine is a Flask backend and React frontend web applicatio
 ## Datasource
 The data located in the variants.tsv file contains a sequence of genes and inter-genetic regions. For the purpose of this project the inter-genetic regions or blank spaces in the sequence have been removed. 
 
-Excluding the intergentic regions (660 total) the file contains:
+Excluding the intergentic regions (660 total) the file contains: <br />
 4345 Unique Genes <br />
 47855 Variants (rows) <br />
 
