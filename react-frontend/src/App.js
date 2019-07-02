@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './App.css'
+import Autocomplete from 'react-autocomplete'
 
-class MyForm extends Component {
+class GeneForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
             input: '',
             submit: '',
+            genes: [],
             variants: []
         };
         this.handleChange = this.handleChange.bind(this);
@@ -39,10 +41,9 @@ class MyForm extends Component {
             .then(res => res.json())
             .then(data => {
                 console.log("Data", data)
-                
+
                 // Set state and update view
                 this.setState({
-                    submit: this.state.input,
                     variants: data
                 });
             });
@@ -103,17 +104,55 @@ class MyForm extends Component {
             <div>
                 <h1 id="header-h1">Gene-variants Search Engine</h1>
                 <div className="search-box">
-                <form id="search-bar" onSubmit={this.handleSubmit}>
-                    <span style={{ color: '#008080', fontSize: 18 }}>Search for a gene  </span>
-                    <input value={this.state.input} onChange={this.handleChange} />
-                    <button type='submit'>Find</button>
-                    {/* <input type="button" onClick={this.cancelCourse}>Reset</input> */}
-                </form>
+                    <form id="search-bar" onSubmit={this.handleSubmit}>
+                        <span style={{ color: '#008080', fontSize: 18 }}>Search for a gene  </span>
+                        <input value={this.state.input} onChange={this.handleChange} />
+                        <button type='submit'>Find</button>
+                        {/* <input type="button" onClick={this.cancelCourse}>Reset</input> */}
+                    </form>
+                    <Autocomplete
+                        getItemValue={(item) => item}
+                        items={
+                            this.state.genes
+                        }
+                        renderItem={(item, isHighlighted) =>
+                            <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+                                {item}
+                            </div>
+                        }
+                        value={this.state.input}
+                        onChange={(event, value) => {
+                            this.setState({ input: value })
+                            // Call fetch here and update state
+                            fetch('http://localhost:5000/genes/' + value, {
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                method: 'GET',
+                            })
+                                .then(res => res.json())
+                                .then(data => {
+                                    console.log("Data", data)
+
+                                    // Set state and update view
+                                    this.setState({
+                                        genes: data
+                                    });
+                                });
+
+                        }}
+                        // onSelect={(val) => value = val}
+                        onSelect={value => {
+                            this.setState({ input: value });
+                          }}
+             
+                        
+                    />
                 </div>
                 <h3 id='table-title' style={{ color: '#008080', fontSize: 30 }}>Variants Table</h3>
                 <table id='variants'>
                     <tbody>
-                        
+
                         <tr>{this.renderTableHeader()}</tr>
                         {this.renderTableData()}
 
@@ -125,4 +164,4 @@ class MyForm extends Component {
     }
 };
 
-export default MyForm;
+export default GeneForm;
