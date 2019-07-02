@@ -36,4 +36,4 @@ if __name__ == "__main__":
     DebugToolbarExtension(app)
 
     # Port 5000 already taken I used 80 instead for this project
-    app.run(host="0.0.0.0", port=80)
+    app.run(host="0.0.0.0")

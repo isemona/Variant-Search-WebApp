@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { thisExpression } from '@babel/types';
-
-
 import './App.css'
 
 class MyForm extends Component {
@@ -15,6 +12,15 @@ class MyForm extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    // cancelCourse = () => { 
+    //     this.setState({
+    //         input: '',
+    //         submit: '',
+    //         genes: []
+    //     });
+    // }
+
     handleChange(event) {
         this.setState({
             input: event.target.value
@@ -102,6 +108,7 @@ class MyForm extends Component {
                     <span style={{ color: '#008080', fontSize: 18 }}>Search for a gene </span>
                     <input value={this.state.input} onChange={this.handleChange} />
                     <button type='submit'>Find</button>
+                    {/* <input type="button" onClick={this.cancelCourse}>Reset</input> */}
                 </form>
                 </div>
                 <h3 id='table-title' style={{ color: '#008080', fontSize: 30 }}>Variants Table</h3>
