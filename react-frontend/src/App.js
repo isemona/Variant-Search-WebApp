@@ -106,11 +106,7 @@ class GeneForm extends Component {
                 <div className="search-box">
                     <form id="search-bar" onSubmit={this.handleSubmit}>
                         <span style={{ color: '#008080', fontSize: 18 }}>Search for a gene  </span>
-                        <input value={this.state.input} onChange={this.handleChange} />
-                        <button type='submit'>Find</button>
-                        {/* <input type="button" onClick={this.cancelCourse}>Reset</input> */}
-                    </form>
-                    <Autocomplete
+                        <Autocomplete
                         getItemValue={(item) => item}
                         items={
                             this.state.genes
@@ -145,9 +141,15 @@ class GeneForm extends Component {
                         onSelect={value => {
                             this.setState({ input: value });
                           }}
+                        />
+                        {/* <input value={this.state.input} onChange={this.handleChange} /> */}
+                        <button type='submit'>Find</button>
+                        {/* <input type="button" onClick={this.cancelCourse}>Reset</input> */}
+                    </form>
+                    
              
                         
-                    />
+
                 </div>
                 <h3 id='table-title' style={{ color: '#008080', fontSize: 30 }}>Variants Table</h3>
                 <table id='variants'>
