@@ -137,19 +137,14 @@ class GeneForm extends Component {
                                 });
 
                         }}
-                        // onSelect={(val) => value = val}
+                        
                         onSelect={value => {
                             this.setState({ input: value });
                           }}
                         />
-                        {/* <input value={this.state.input} onChange={this.handleChange} /> */}
                         <button type='submit'>Find</button>
                         {/* <input type="button" onClick={this.cancelCourse}>Reset</input> */}
                     </form>
-                    
-             
-                        
-
                 </div>
                 <h3 id='table-title' style={{ color: '#008080', fontSize: 30 }}>Variants Table</h3>
                 <table id='variants'>

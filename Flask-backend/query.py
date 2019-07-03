@@ -9,15 +9,15 @@ def create_gene_dict(gene_file):
         reader = csv.DictReader(tsvfile, dialect='excel-tab')
         headers = reader.fieldnames
         for row in reader:
-            # if it is not an empty string continue
+            # If it is not an empty string continue.
             if row['Gene']: 
-                # initializing each gene to have an array
+                # Initializing each gene to have an array to store variants.
                 if gene_dict.get(row["Gene"]) is None: 
                     gene_dict[row['Gene']] = []
-                # alway append a dict comprehension of the attributes except for Gene
+                # Always append a dict-comprehension of the attributes except for Gene.
                 gene_dict[row['Gene']].append({attribute: row[attribute] for attribute in headers if attribute != "Gene" }) 
 
     return gene_dict
 
-    # refactor with default dict
+    # Refactor with default-dict
 

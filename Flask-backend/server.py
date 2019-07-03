@@ -7,7 +7,7 @@ from flask_restful import Resource, Api, reqparse
 from flask_cors import CORS
  
 
-# from model import connect_to_db, db
+# From model import connect_to_db, db
 
 from query import gene_file, create_gene_dict
 
@@ -18,8 +18,10 @@ CORS(app)
 # The Flask-DebugToolbar requires the 'SECRET_KEY' config var to be set
 app.secret_key = "gene_machine"
 
+
 variants = create_gene_dict(gene_file)
 
+# Method to get list of genes
 class Genes(Resource):
     def get(self, gene_id):
         gene_list = list(variants)
@@ -29,10 +31,12 @@ class Genes(Resource):
 # Handles the route, explicitly tells Flask we are requesting gene_id
 api.add_resource(Genes, '/genes/<string:gene_id>') 
 
+# Method to get variants and their attributes
 class Variants(Resource):
     def get(self, var_id):
         return variants[var_id]
 
+# Endpoint to retrieve variants
 api.add_resource(Variants, '/variants/<string:var_id>') 
 
 
