@@ -14,8 +14,8 @@ def create_gene_dict(gene_file):
                 # Initializing each gene to have an array to store variants.
                 if gene_dict.get(row["Gene"]) is None: 
                     gene_dict[row['Gene']] = []
-                # Always append a dict-comprehension of the attributes except for Gene.
-                gene_dict[row['Gene']].append({attribute: row[attribute] for attribute in headers if attribute != "Gene" }) 
+                # Always append a dict-comprehension of the attributes including the Gene column.
+                gene_dict[row['Gene']].append({attribute: row[attribute] for attribute in headers}) 
 
     return gene_dict
 

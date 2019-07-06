@@ -68,7 +68,7 @@ class GeneForm extends Component {
             return this.state.variants.map((variant, index) => {
                 return (
                     <tr key={index}>
-                        <td>{this.state.input}</td>
+                        <td>{variant['Gene']}</td>
                         <td>{variant['Nucleotide Change']}</td>
                         <td>{variant['Protein Change']}</td>
                         <td>{variant['Other Mappings']}</td>
